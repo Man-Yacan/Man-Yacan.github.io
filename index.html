@@ -28,8 +28,8 @@
   
   <!-- Custom Files headBegin end-->
   <link rel="preload" href="/css/style.css" as="style">
-  <link rel="preload" href="https://unpkg.com/volantis-static@0.0.1660614606622/media/fonts/VarelaRound/VarelaRound-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
-<link rel="preload" href="https://unpkg.com/volantis-static@0.0.1660614606622/media/fonts/UbuntuMono/UbuntuMono-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+  <link rel="preload" href="https://unpkg.com/volantis-static@0.0.1660614606622/media/fonts/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+<link rel="preload" href="https://unpkg.com/volantis-static@0.0.1660614606622/media/fonts/Dosis/Dosis-Medium.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 
   <!-- feed -->
   <!-- 页面元数据 -->
@@ -52,6 +52,10 @@
     /* 首屏样式 */
     #safearea {
   display: none;
+}
+.post-story + .post-story {
+  content-visibility: auto;
+  contain-intrinsic-size: 10px 500px;
 }
 :root {
   --color-site-body: #f4f4f4;
@@ -105,7 +109,7 @@ html {
   color: var(--color-text);
   width: 100%;
   height: 100%;
-  font-family: UbuntuMono, "Varela Round", "PingFang SC", "Microsoft YaHei", Helvetica, Arial, Menlo, Monaco, monospace, sans-serif;
+  font-family: Dosis, "PingFang SC", "Microsoft YaHei", Helvetica, Arial, Menlo, Monaco, monospace, sans-serif;
   font-size: 16px;
 }
 html >::-webkit-scrollbar {
@@ -516,7 +520,7 @@ button {
   margin-top: 32px;
 }
 .cover-wrapper .cover-body .title {
-  font-family: "Varela Round", "PingFang SC", "Microsoft YaHei", Helvetica, Arial, Helvetica, monospace;
+  font-family: Dosis, "PingFang SC", "Microsoft YaHei", Helvetica, Arial, Helvetica, monospace;
   font-size: 3.125rem;
   line-height: 1.2;
   text-shadow: 0 1px 2px rgba(0,0,0,0.1);
@@ -830,16 +834,233 @@ button {
     backdrop-filter: saturate(200%) blur(20px);
   }
 }
+.cover-wrapper #parallax-window {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
+.parallax-mirror {
+  animation-delay: 0s;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+  animation-name: fadeIn;
+}
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0;
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    filter: blur(12px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+  }
+}
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    filter: blur(12px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+  }
+}
+@-o-keyframes fadeIn {
+  0% {
+    opacity: 0;
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    filter: blur(12px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    -webkit-opacity: 0;
+    -moz-opacity: 0;
+    filter: blur(12px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-mode: 'dark';
+  }
+  :root:not([color-scheme]) {
+    --color-site-body: #121212;
+    --color-read-bkg: #1f1f1f;
+    --color-read-post: #262626;
+    --color-site-bg: #1f1f1f;
+    --color-site-inner: rgba(238,238,238,0.871);
+    --color-site-footer: rgba(170,170,170,0.871);
+    --color-card: #262626;
+    --color-text: rgba(238,238,238,0.871);
+    --color-block: #434343;
+    --color-codeblock: #1f1f1f;
+    --color-inlinecode: #d56d28;
+    --color-h1: rgba(255,255,255,0.871);
+    --color-h2: rgba(255,255,255,0.871);
+    --color-h3: rgba(255,255,255,0.6);
+    --color-h4: rgba(255,255,255,0.6);
+    --color-h5: rgba(255,255,255,0.6);
+    --color-h6: rgba(255,255,255,0.6);
+    --color-p: rgba(217,217,217,0.871);
+    --color-list: rgba(217,217,217,0.871);
+    --color-list-hl: #63e0c4;
+    --color-meta: rgba(191,191,191,0.871);
+    --color-link: rgba(191,191,191,0.871);
+    --color-copyright-bkg: #21252b;
+  }
+  :root:not([color-scheme]) img {
+    filter: brightness(70%) !important;
+  }
+  :root:not([color-scheme]) .blur {
+    background: rgba(31,31,31,0.9) !important;
+  }
+  :root:not([color-scheme]) .white-box.blur {
+    background: rgba(38,38,38,0.9) !important;
+  }
+  :root:not([color-scheme]) .nav-main .u-search-input {
+    background: var(--color-card) !important;
+  }
+  :root:not([color-scheme]) #l_main .article .prev-next>a {
+    background: var(--color-block) !important;
+  }
+  :root:not([color-scheme]) #l_main .article .prev-next>a:hover {
+    background: var(--color-site-bg) !important;
+  }
+  :root:not([color-scheme]) .article blockquote {
+    background: var(--color-block) !important;
+  }
+  :root:not([color-scheme]) .article-title a {
+    color: var(--color-h1) !important;
+  }
+  :root:not([color-scheme]) details>summary {
+    color: var(--color-p) !important;
+    background: var(--color-site-bg) !important;
+  }
+  :root:not([color-scheme]) details {
+    border: 1px solid var(--color-site-bg) !important;
+    background: var(--color-site-bg) !important;
+  }
+  :root:not([color-scheme]) #u-search .modal,
+  :root:not([color-scheme]) #u-search .modal-header,
+  :root:not([color-scheme]) #u-search .modal-body {
+    background: var(--color-card) !important;
+  }
+  :root:not([color-scheme]) #u-search .modal-body .modal-results .result:hover {
+    background: var(--color-block) !important;
+  }
+  :root:not([color-scheme]) .u-search-input:hover {
+    background: var(--color-block) !important;
+  }
+  :root:not([color-scheme]) .u-search-input:focus {
+    background: var(--color-site-body) !important;
+  }
+}
+[color-scheme='dark'] {
+  --color-site-body: #121212;
+  --color-read-bkg: #1f1f1f;
+  --color-read-post: #262626;
+  --color-site-bg: #1f1f1f;
+  --color-site-inner: rgba(238,238,238,0.871);
+  --color-site-footer: rgba(170,170,170,0.871);
+  --color-card: #262626;
+  --color-text: rgba(238,238,238,0.871);
+  --color-block: #434343;
+  --color-codeblock: #1f1f1f;
+  --color-inlinecode: #d56d28;
+  --color-h1: rgba(255,255,255,0.871);
+  --color-h2: rgba(255,255,255,0.871);
+  --color-h3: rgba(255,255,255,0.6);
+  --color-h4: rgba(255,255,255,0.6);
+  --color-h5: rgba(255,255,255,0.6);
+  --color-h6: rgba(255,255,255,0.6);
+  --color-p: rgba(217,217,217,0.871);
+  --color-list: rgba(217,217,217,0.871);
+  --color-list-hl: #63e0c4;
+  --color-meta: rgba(191,191,191,0.871);
+  --color-link: rgba(191,191,191,0.871);
+  --color-copyright-bkg: #21252b;
+}
+[color-scheme='dark'] img {
+  filter: brightness(70%) !important;
+}
+[color-scheme='dark'] .blur {
+  background: rgba(31,31,31,0.9) !important;
+}
+[color-scheme='dark'] .white-box.blur {
+  background: rgba(38,38,38,0.9) !important;
+}
+[color-scheme='dark'] .nav-main .u-search-input {
+  background: var(--color-card) !important;
+}
+[color-scheme='dark'] #l_main .article .prev-next>a {
+  background: var(--color-block) !important;
+}
+[color-scheme='dark'] #l_main .article .prev-next>a:hover {
+  background: var(--color-site-bg) !important;
+}
+[color-scheme='dark'] .article blockquote {
+  background: var(--color-block) !important;
+}
+[color-scheme='dark'] .article-title a {
+  color: var(--color-h1) !important;
+}
+[color-scheme='dark'] details>summary {
+  color: var(--color-p) !important;
+  background: var(--color-site-bg) !important;
+}
+[color-scheme='dark'] details {
+  border: 1px solid var(--color-site-bg) !important;
+  background: var(--color-site-bg) !important;
+}
+[color-scheme='dark'] #u-search .modal,
+[color-scheme='dark'] #u-search .modal-header,
+[color-scheme='dark'] #u-search .modal-body {
+  background: var(--color-card) !important;
+}
+[color-scheme='dark'] #u-search .modal-body .modal-results .result:hover {
+  background: var(--color-block) !important;
+}
+[color-scheme='dark'] .u-search-input:hover {
+  background: var(--color-block) !important;
+}
+[color-scheme='dark'] .u-search-input:focus {
+  background: var(--color-site-body) !important;
+}
+@media screen and (max-width: 500px) {
+  [color-scheme='dark'] .l_header .m_search {
+    background: var(--color-site-bg) !important;
+  }
+}
 @font-face {
-  font-family: 'UbuntuMono';
-  src: url("https://unpkg.com/volantis-static@0.0.1660614606622/media/fonts/UbuntuMono/UbuntuMono-Regular.ttf");
+  font-family: 'Dosis';
+  src: url("https://unpkg.com/volantis-static@0.0.1660614606622/media/fonts/Dosis/Dosis-Medium.ttf");
   font-weight: 'normal';
   font-style: 'normal';
   font-display: swap;
 }
 @font-face {
-  font-family: 'Varela Round';
-  src: url("https://unpkg.com/volantis-static@0.0.1660614606622/media/fonts/VarelaRound/VarelaRound-Regular.ttf");
+  font-family: 'Dosis';
+  src: url("https://unpkg.com/volantis-static@0.0.1660614606622/media/fonts/Dosis/Dosis-Medium.ttf");
   font-weight: 'normal';
   font-style: 'normal';
   font-display: swap;
@@ -962,7 +1183,7 @@ button {
   line-height: 64px;
   padding: 0 24px;
   font-size: 1.25rem;
-  font-family: "Varela Round", "PingFang SC", "Microsoft YaHei", Helvetica, Arial, Helvetica, monospace;
+  font-family: Dosis, "PingFang SC", "Microsoft YaHei", Helvetica, Arial, Helvetica, monospace;
 }
 .l_header #wrapper .nav-main .title img {
   height: 64px;
@@ -973,7 +1194,7 @@ button {
 }
 .l_header .nav-sub .title {
   font-weight: bold;
-  font-family: UbuntuMono, "Varela Round", "PingFang SC", "Microsoft YaHei", Helvetica, Arial, Menlo, Monaco, monospace, sans-serif;
+  font-family: Dosis, "PingFang SC", "Microsoft YaHei", Helvetica, Arial, Menlo, Monaco, monospace, sans-serif;
   line-height: 1.2;
   max-height: 64px;
   white-space: normal;
@@ -1666,10 +1887,21 @@ ul.list-v >li>a:hover {
     padding: 0px;
   }
 }
+@media screen and (prefers-color-scheme: dark) and (max-width: 500px) {
+  .l_header .m_search {
+    background: var(--color-site-bg) !important;
+  }
+}
 
   </style>
   <link rel="stylesheet" href="/css/style.css" media="print" onload="this.media='all';this.onload=null">
   <noscript><link rel="stylesheet" href="/css/style.css"></noscript>
+    <script>
+      let userColorScheme=localStorage.getItem("color-scheme")
+      if(userColorScheme){
+        document.documentElement.setAttribute("color-scheme", userColorScheme);
+      }
+    </script>
   
 <script>
 if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode))
@@ -1736,7 +1968,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <script>
   /************这个文件存放不需要重载的全局变量和全局函数*********/
   window.volantis = {}; // volantis 全局变量
-  volantis.debug = "env"; // 调试模式
+  volantis.debug = "false"; // 调试模式
   volantis.dom = {}; // 页面Dom see: /source/js/app.js etc.
   /******************** volantis.dom.$ ********************************/
   // 注：这里没有选择器，也没有forEach一次只处理一个dom，这里重新封装主题常用的dom方法，返回的是dom对象，对象包含了以下方法，同时保留dom的原生API
@@ -2108,9 +2340,9 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   pdata.commentConfig={};
   volantis.GLOBAL_CONFIG ={
     root: '/',
-    debug: "env",
+    debug: false,
     default: {"avatar":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/avatar/round/3442075.svg","link":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/link/8f277b4ee0ecd.svg","cover":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/cover/76b86c0226ffd.svg","image":"https://unpkg.com/volantis-static@0.0.1660614606622/media/placeholder/image/2659360.svg"},
-    lastupdate: new Date(1669470575431),
+    lastupdate: new Date(1669472494933),
     cdn: {
       izitoast_css: 'https://cdn.bootcdn.net/ajax/libs/izitoast/1.4.0/css/iziToast.min.css',
       izitoast_js: 'https://cdn.bootcdn.net/ajax/libs/izitoast/1.4.0/js/iziToast.min.js',
@@ -2118,7 +2350,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       fancybox_js: 'https://cdn.bootcdn.net/ajax/libs/fancyapps-ui/4.0.31/fancybox.umd.min.js'
     },
     sidebar: {
-      for_page: ["blogger","category","tagcloud","donate"],
+      for_page: ["qgroup","post","category","guide"],
       for_post: ["toc"],
       webinfo: {
         lastupd: {
@@ -2132,8 +2364,15 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       }
     },
     plugins: {
-      message: {"enable":true,"icon":{"default":"fa-solid fa-info-circle light-blue","quection":"fa-solid fa-question-circle light-blue"},"time":{"default":5000,"quection":20000},"position":"topRight","transitionIn":"bounceInLeft","transitionOut":"fadeOutRight","titleColor":"var(--color-text)","messageColor":"var(--color-text)","backgroundColor":"var(--color-card)","zindex":2147483647,"copyright":{"enable":true,"title":"知识共享许可协议","message":"请遵守 CC BY-NC-SA 4.0 协议。","icon":"far fa-copyright light-blue"},"aplayer":{"enable":true,"play":"fa-solid fa-play","pause":"fa-solid fa-pause"},"rightmenu":{"enable":true,"notice":true}},
+      message: {"enable":true,"icon":{"default":"fa-light fa-info-circle light-blue","quection":"fa-light fa-question-circle light-blue"},"time":{"default":5000,"quection":20000},"position":"topRight","transitionIn":"bounceInLeft","transitionOut":"fadeOutRight","titleColor":"var(--color-text)","messageColor":"var(--color-text)","backgroundColor":"var(--color-card)","zindex":2147483647,"copyright":{"enable":false,"title":"知识共享许可协议","message":"请遵守 CC BY-NC-SA 4.0 协议。","icon":"fa-brands fa-creative-commons light-blue"},"aplayer":{"enable":true,"play":"fa-light fa-play light-blue","pause":"fa-light fa-pause light-blue","error":"fa-light fa-exclamation-square red"},"rightmenu":{"enable":true,"notice":true}},
       
+      aplayer: {
+        id: 5062959861,
+        enable:true
+      },
+      
+      
+      rightmenus: {"enable":true,"order":["plugins.navigation","hr","plugins.inputBox","plugins.seletctText","plugins.elementCheck","plugins.elementImage","hr","menus.prevNext","hr","menus.links","hr","menus.darkMode","hr","plugins.articlePage","hr","music"],"options":{"iconPrefix":"fa-duotone PETERRIVE","articleShowLink":true,"musicAlwaysShow":true},"plugins":{"navigation":[{"id":"left","name":"转到上一页","icon":"fa-duotone fa-arrow-left PETERRIVE","event":"history.back()","group":"navigation"},{"id":"right","name":"转到下一页","icon":"fa-duotone fa-arrow-right PETERRIVE","event":"history.forward()","group":"navigation"},{"id":"redo","name":"刷新当前页面","icon":"fa-duotone fa-redo PETERRIVE","event":"window.location.reload()","group":"navigation"},{"id":"up","name":"回到顶部","icon":"fa-duotone fa-arrow-up PETERRIVE","event":"VolantisApp.scrolltoElement(volantis.dom.bodyAnchor)","group":"navigation"}],"inputBox":[{"id":"copyPaste","name":"粘贴文本","icon":"fa-duotone PETERRIVE fa-paste","event":"copyPaste","group":"inputBox"},{"id":"copyAll","name":"全选文本","icon":"fa-duotone PETERRIVE fa-object-ungroup","event":"copyAll","group":"inputBox"},{"id":"copyCut","name":"剪切文本","icon":"fa-duotone PETERRIVE fa-cut","event":"copyCut","group":"inputBox"}],"seletctText":[{"id":"copyText","name":"复制文本","icon":"fa-duotone PETERRIVE fa-copy","event":"copyText","group":"seletctText"},{"id":"searchWord","name":"站内搜索","icon":"fa-duotone PETERRIVE fa-search","event":"OpenSearch(__text__)","group":"seletctText"},{"id":"bingSearch","name":"必应搜索","icon":"fa-duotone PETERRIVE fa-search","event":"window.open(`https://cn.bing.com/search?q=${__text__}`)","group":"seletctText"}],"elementCheck":[{"id":"openTab","name":"新标签页打开","icon":"fa-duotone PETERRIVE fa-external-link-square-alt","event":"window.open(__link__)","group":"elementCheck"},{"id":"copyLink","name":"复制链接地址","icon":"fa-duotone PETERRIVE fa-link","event":"copyLink","group":"elementCheck"}],"elementImage":[{"id":"copyImg","name":"复制图片","icon":"fa-duotone PETERRIVE fa-image","event":"copyImg","group":"elementImage"},{"id":"googleImg","name":"谷歌识图","icon":"fa-duotone PETERRIVE fa-images","event":"window.open(`https://www.google.com/searchbyimage?image_url=${__link__}`)","group":"elementImage"}],"articlePage":[{"id":"printMode","name":"打印页面","icon":"fa-duotone fa-print TURQUOISE","event":"printMode","group":"articlePage"},{"id":"readMode","name":"阅读模式","icon":"fa-duotone fa-book-open EMERALD","event":"readMode","group":"articlePage"}]},"menus":{"link":[{"id":"help","name":"常见问题","icon":"fa-solid fa-question","link":"https://volantis.js.org/faqs/","group":"link"},{"id":"examples","name":"示例博客","icon":"fa-solid fa-rss","link":"https://volantis.js.org/examples/","group":"link"},{"id":"contributors","name":"加入社区","icon":"fa-solid fa-fan","link":"https://volantis.js.org/contributors/","group":"link"},"hr",{"id":"source_docs","name":"本站源码","icon":"fa-solid fa-code-branch","link":"https://github.com/volantis-x/volantis-docs/","group":"link"},{"id":"source_theme","name":"主题源码","icon":"fa-solid fa-code-branch","link":"https://github.com/volantis-x/hexo-theme-volantis/","group":"link"}],"darkMode":[{"id":"darkMode","name":"暗黑模式","icon":"fa-duotone fa-eclipse-alt WISTERIA","event":"volantis.dark.toggle()","group":"darkMode"}],"links":[{"id":"help","name":"常见问题","icon":"fa-duotone fa-question EMERALD","link":"/faqs/","group":"link"},{"id":"examples","name":"示例博客","icon":"fa-duotone fa-rss PETERRIVE","link":"/examples/","group":"link"},{"id":"contributors","name":"加入社区","icon":"fa-duotone fa-fan fa-spin AMETHYST","link":"/contributors/","group":"link"},"hr",{"id":"source_docs","name":"本站源码","icon":"fa-duotone fa-code-branch WETASPHALT","link":"https://github.com/volantis-x/volantis-docs/","group":"link"},{"id":"source_theme","name":"主题源码","icon":"fa-duotone fa-code-branch CONCRETE","link":"https://github.com/volantis-x/hexo-theme-volantis/","group":"link"}],"prevNext":[{"id":"prev","name":"查看上一篇","icon":"fa-duotone fa-angles-left PETERRIVE","event":"volantis.rightmenu.jump('prev')","group":"prevNext"},{"id":"next","name":"查看下一篇","icon":"fa-duotone fa-angles-right PETERRIVE","event":"volantis.rightmenu.jump('next')","group":"prevNext"}]}}
       
     },
     search: {
@@ -2184,9 +2423,11 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
         
         <a class="title flat-box" target="_self" href='/'>
           
-            <img no-lazy class='logo' src='https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/Logo-NavBar@3x.png'/>
+          
+            <i class='favicon.ico'></i>
           
           
+            Yacans Blog <sup style="color:#ff9800">alpha</sup>
           
         </a>
       
@@ -2200,13 +2441,15 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover"
-                href="/" title="博客"
+                href="/v6/getting-started/" title="文档"
                   
                   
+                    target="_self"
                   
-                    active-action="action-home"
+                  
+                    active-action="action-v6getting-started"
                   >
-                  <i class='fa-solid fa-rss fa-fw'></i>博客
+                  <i class='fa-duotone fa-book faa-tada fa-fw'></i>文档
                 </a>
                 
               </li>
@@ -2217,13 +2460,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover"
-                href="/categories/" title="分类"
+                href="/examples/" title="示例"
                   
                   
                   
-                    active-action="action-categories"
+                    active-action="action-examples"
                   >
-                  <i class='fa-solid fa-folder-open fa-fw'></i>分类
+                  <i class='fa-duotone fa-play-circle faa-tada fa-fw'></i>示例
                 </a>
                 
               </li>
@@ -2234,13 +2477,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover"
-                href="/tags/" title="标签"
+                href="/faqs/" title="帮助"
                   
                   
                   
-                    active-action="action-tags"
+                    active-action="action-faqs"
                   >
-                  <i class='fa-solid fa-tags fa-fw'></i>标签
+                  <i class='fa-duotone fa-question-circle faa-tada fa-fw'></i>帮助
                 </a>
                 
               </li>
@@ -2251,48 +2494,146 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover"
-                href="/archives/" title="归档"
+                href="/contributors/" title="鸣谢"
+                  
+                  
+                  
+                    active-action="action-contributors"
+                  >
+                  <i class='fa-duotone fa-heart fa-fw'></i>鸣谢
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover"
+                 title="更多"
+                  
+                  
+                  >
+                  <i class='fa-duotone fa-ellipsis-v fa-fw'></i>更多
+                </a>
+                
+                  <ul class="list-v">
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box header toggle-mode-btn">
+                  <i class='fa-solid fa-moon fa-fw'></i>暗黑模式
+                </a>
+              <li>
+            
+          
+                    
+                      
+            
+              <hr>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover"
+                target="_blank" rel="noopener" href="https://github.com/volantis-x/volantis-docs/" title="本站源码"
+                  
+                  
+                  
+                    active-action="action-https:githubcomvolantis-xvolantis-docs"
+                  >
+                  本站源码
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover"
+                target="_blank" rel="noopener" href="https://github.com/volantis-x/hexo-theme-volantis/" title="主题源码"
+                  
+                  
+                  
+                    active-action="action-https:githubcomvolantis-xhexo-theme-volantis"
+                  >
+                  主题源码
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <hr>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover"
+                target="_blank" rel="noopener" href="https://github.com/volantis-x/hexo-theme-volantis/releases/" title="更新日志"
+                  
+                  
+                  
+                    active-action="action-https:githubcomvolantis-xhexo-theme-volantisreleases"
+                  >
+                  更新日志
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover"
+                href="/archives/" title="博客文章"
                   
                   
                   
                     active-action="action-archives"
                   >
-                  <i class='fa-solid fa-archive fa-fw'></i>归档
+                  博客文章
                 </a>
                 
               </li>
             
           
-          
+                    
+                      
             
+              <hr>
+            
+          
+                    
+                      
             
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover"
-                href="/friends/" title="友链"
+                href="/v5/getting-started/" title="文档 v5"
                   
                   
                   
-                    active-action="action-friends"
+                    active-action="action-v5getting-started"
                   >
-                  <i class='fa-solid fa-link fa-fw'></i>友链
+                  文档 v5
                 </a>
                 
               </li>
             
           
-          
-            
-            
-              <li>
-                <a class="menuitem flat-box faa-parent animated-hover"
-                href="/about/" title="关于"
-                  
-                  
-                  
-                    active-action="action-about"
-                  >
-                  <i class='fa-solid fa-info-circle fa-fw'></i>关于
-                </a>
+                    
+                  </ul>
                 
               </li>
             
@@ -2321,13 +2662,15 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover"
-                href="/" title="博客"
+                href="/v6/getting-started/" title="文档"
                   
                   
+                    target="_self"
                   
-                    active-action="action-home"
+                  
+                    active-action="action-v6getting-started"
                   >
-                  <i class='fa-solid fa-rss fa-fw'></i>博客
+                  <i class='fa-duotone fa-book faa-tada fa-fw'></i>文档
                 </a>
                 
               </li>
@@ -2338,13 +2681,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover"
-                href="/categories/" title="分类"
+                href="/examples/" title="示例"
                   
                   
                   
-                    active-action="action-categories"
+                    active-action="action-examples"
                   >
-                  <i class='fa-solid fa-folder-open fa-fw'></i>分类
+                  <i class='fa-duotone fa-play-circle faa-tada fa-fw'></i>示例
                 </a>
                 
               </li>
@@ -2355,13 +2698,13 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover"
-                href="/tags/" title="标签"
+                href="/faqs/" title="帮助"
                   
                   
                   
-                    active-action="action-tags"
+                    active-action="action-faqs"
                   >
-                  <i class='fa-solid fa-tags fa-fw'></i>标签
+                  <i class='fa-duotone fa-question-circle faa-tada fa-fw'></i>帮助
                 </a>
                 
               </li>
@@ -2372,48 +2715,146 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
             
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover"
-                href="/archives/" title="归档"
+                href="/contributors/" title="鸣谢"
+                  
+                  
+                  
+                    active-action="action-contributors"
+                  >
+                  <i class='fa-duotone fa-heart fa-fw'></i>鸣谢
+                </a>
+                
+              </li>
+            
+          
+            
+              
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover"
+                 title="更多"
+                  
+                  
+                  >
+                  <i class='fa-duotone fa-ellipsis-v fa-fw'></i>更多
+                </a>
+                
+                  <ul class="list-v">
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box header toggle-mode-btn">
+                  <i class='fa-solid fa-moon fa-fw'></i>暗黑模式
+                </a>
+              <li>
+            
+          
+                    
+                      
+            
+              <hr>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover"
+                target="_blank" rel="noopener" href="https://github.com/volantis-x/volantis-docs/" title="本站源码"
+                  
+                  
+                  
+                    active-action="action-https:githubcomvolantis-xvolantis-docs"
+                  >
+                  本站源码
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover"
+                target="_blank" rel="noopener" href="https://github.com/volantis-x/hexo-theme-volantis/" title="主题源码"
+                  
+                  
+                  
+                    active-action="action-https:githubcomvolantis-xhexo-theme-volantis"
+                  >
+                  主题源码
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <hr>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover"
+                target="_blank" rel="noopener" href="https://github.com/volantis-x/hexo-theme-volantis/releases/" title="更新日志"
+                  
+                  
+                  
+                    active-action="action-https:githubcomvolantis-xhexo-theme-volantisreleases"
+                  >
+                  更新日志
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="menuitem flat-box faa-parent animated-hover"
+                href="/archives/" title="博客文章"
                   
                   
                   
                     active-action="action-archives"
                   >
-                  <i class='fa-solid fa-archive fa-fw'></i>归档
+                  博客文章
                 </a>
                 
               </li>
             
           
+                    
+                      
             
-              
+              <hr>
+            
+          
+                    
+                      
             
               <li>
                 <a class="menuitem flat-box faa-parent animated-hover"
-                href="/friends/" title="友链"
+                href="/v5/getting-started/" title="文档 v5"
                   
                   
                   
-                    active-action="action-friends"
+                    active-action="action-v5getting-started"
                   >
-                  <i class='fa-solid fa-link fa-fw'></i>友链
+                  文档 v5
                 </a>
                 
               </li>
             
           
-            
-              
-            
-              <li>
-                <a class="menuitem flat-box faa-parent animated-hover"
-                href="/about/" title="关于"
-                  
-                  
-                  
-                    active-action="action-about"
-                  >
-                  <i class='fa-solid fa-info-circle fa-fw'></i>关于
-                </a>
+                    
+                  </ul>
                 
               </li>
             
@@ -2437,7 +2878,7 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
     
       <div class="cover-wrapper  dock" id='full'>
         
-  <div class='cover-bg lazyload placeholder' data-bg="https://gcore.jsdelivr.net/gh/MHG-LAB/cron@gh-pages/bing/bing.jpg"></div>
+  <div id="parallax-window"></div>
 
 <div class='cover-body'>
   <div class='top'>
@@ -2446,49 +2887,62 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
       <p class="title">Volantis</p>
     
     
+      <p class="subtitle">中文创作者社区</p>
+    
   </div>
   <div class='bottom'>
     <div class='menu navigation'>
       <div class='list-h'>
         
           
-            <a href="/v4/getting-started/"
+            <a href="/"
               
               
-              active-action="action-v4getting-started">
-              <img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/twemoji/assets/svg/1f5c3.svg'><p>文档</p>
+              active-action="action-home">
+              <img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/twemoji/assets/svg/1f4f0.svg'><p>博客</p>
             </a>
           
-            <a href="/faqs/"
+            <a href="/v6/getting-started/"
               
               
-              active-action="action-faqs">
-              <img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/twemoji/assets/svg/1f516.svg'><p>帮助</p>
+                target="_self"
+              
+              active-action="action-v6getting-started">
+              <img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/twemoji/assets/svg/1f516.svg'><p>文档</p>
             </a>
           
             <a href="/examples/"
               
               
               active-action="action-examples">
-              <img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/twemoji/assets/svg/1f396.svg'><p>示例</p>
+              <img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/twemoji/assets/svg/1f4af.svg'><p>示例</p>
+            </a>
+          
+            <a href="/faqs/"
+              
+              
+              active-action="action-faqs">
+              <img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/twemoji/assets/svg/1f4ac.svg'><p>帮助</p>
             </a>
           
             <a href="/contributors/"
               
               
               active-action="action-contributors">
-              <img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/twemoji/assets/svg/1f389.svg'><p>社区</p>
+              <img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/twemoji/assets/svg/1f497.svg'><p>鸣谢</p>
             </a>
           
             <a href="/archives/"
               
               
               active-action="action-archives">
-              <img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/twemoji/assets/svg/1f4f0.svg'><p>博客</p>
+              <img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/twemoji/assets/svg/1f5c3.svg'><p>归档</p>
             </a>
           
-            <a target="_blank" rel="noopener" href="https://github.com/volantis-x/hexo-theme-volantis/"
+            <a href="https://github.com/volantis-x/hexo-theme-volantis/"
               
+              
+                target="_self"
               
               active-action="action-https:githubcomvolantis-xhexo-theme-volantis">
               <img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/twemoji/assets/svg/1f9ec.svg'><p>源码</p>
@@ -2551,8 +3005,98 @@ if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMo
   <div class='md article-desc' itemprop="articleBody">
     
       
-        Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Qu...
+        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<div class="story post-story"><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<hr>
+</div><div class="story post-story"><h2 id="Hexo简介"><a href="#Hexo简介" class="headerlink" title="Hexo简介"></a>Hexo简介</h2><p>Hexo 是一个基于Node.js的静态博客网站生成器，作者是来自台湾的 <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo">Tommy Chen</a>。常规的<code>WordPress</code>或者<code>Typecho</code>博客系统都需要借助于<code>Apache</code>或者<code>Nginx</code>服务器配合PHP程序与数据库完成博客的部署，除了前端的HTML&amp;CSS、JavaScript你需要学习之外，还需要对后端PHP程序以及MySQL数据库有一定的认识和了解，而学习了这么多，却仅仅是为了搭建一个博客。别忘了，搭建博客的目的是写作，是博客的内容，这才是重点，所以说传统博客系统的复杂程序直接对很多小白进行了劝退。但是<code>Hexo</code>则是静态博客，不需要服务器端处理复杂的任务，类似于<a target="_blank" rel="noopener" href="https://blog.manyacan.com/archives/2011/">docsify</a>，可以让你抛弃后端PHP、MySQL，直接编辑Markdown文件，然后由网站前端输出。</p>
+</div><div class="story post-story"><h2 id="环境安装"><a href="#环境安装" class="headerlink" title="环境安装"></a>环境安装</h2><h3 id="举个🌰"><a href="#举个🌰" class="headerlink" title="举个🌰"></a>举个🌰</h3><p>安装之前，我先给大家举一个不恰当的栗子用于理解这个安装过程，<code>Node.js</code>就像我们的手机操作系统，<code>nmp</code>就是手机上的软件商店，而<code>Hexo</code>就是一个APP应用。我们安装的步骤就是先装操作系统，然后是应用商店，最后才是软件。</p>
+<h3 id="“操作系统”的安装"><a href="#“操作系统”的安装" class="headerlink" title="“操作系统”的安装"></a>“操作系统”的安装</h3><p>Hexo博客基于<code>Node.js</code>，因此首先要安装<code>Node.js</code>，可以查看文章<a target="_blank" rel="noopener" href="https://blog.manyacan.com/archives/2011/#toc_1">docsify学习笔记</a>，学习如何安装。</p>
+<h3 id="“应用商店”的安装"><a href="#“应用商店”的安装" class="headerlink" title="“应用商店”的安装"></a>“应用商店”的安装</h3><p>成功安装后，需要将<code>nmp</code>源切换为国内淘宝源：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry=http://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+
+<p>安装完成后可以使用命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm -v</span><br></pre></td></tr></table></figure>
+
+<p>查看<code>cnpm</code>版本，如果可以成功显示，说明安装成功。</p>
+<h3 id="“APP软件”的安装"><a href="#“APP软件”的安装" class="headerlink" title="“APP软件”的安装"></a>“APP软件”的安装</h3><p>直接使用命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<p>安装<code>Hexo</code>博客。安装完毕后，使用命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo -v</span><br></pre></td></tr></table></figure>
+
+<p>查看<code>Hexo</code>版本，如果可以正常显示，说明安装成功。</p>
+<p>至此，“操作系统”、“应用商店”、“APP软件”所有环境已经安装完毕。</p>
+</div><div class="story post-story"><h2 id="本地部署"><a href="#本地部署" class="headerlink" title="本地部署"></a>本地部署</h2><p>接下来就是如何在本地部署<code>Hexo</code>博客。</p>
+<p><img src="https://image.manyacan.com/202211261647249.png-wm04" class="lazyload" data-srcset="https://image.manyacan.com/202211261647249.png-wm04" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></p>
+<p>如图所示，我在我的PC中<code>D:\code</code>文件夹中新建了一个<code>Hexo-Demo</code>的文件夹，我想把博客就在这个文件夹中。</p>
+<p>打开<code>CMD</code>窗口，使用命令<code>cd</code>即可切换工作目录：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Users\myxc&gt; cd D:\code\Hexo-Demo</span><br><span class="line">PS D:\code\Hexo-Demo&gt;</span><br></pre></td></tr></table></figure>
+
+<p>或者你也可以直接在<code>Hexo-Demo</code>文件夹中点击鼠标右键，然后选择Open in Termainal。</p>
+<p><img src="https://image.manyacan.com/202211261654335.png-wm04" class="lazyload" data-srcset="https://image.manyacan.com/202211261654335.png-wm04" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></p>
+<h3 id="创建博客"><a href="#创建博客" class="headerlink" title="创建博客"></a>创建博客</h3><p>在该文件夹中使用命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+
+<p>即可生成博客，这个时候你会发现原来空白的文件夹中已经自动生成了很多文件，这也就意味着你已经完成了博客的创建。</p>
+<p><img src="https://image.manyacan.com/202211261657180.png-wm04" class="lazyload" data-srcset="https://image.manyacan.com/202211261657180.png-wm04" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></p>
+<p>需要注意的是，往后去所有关于本博客的操作，基本都是在文件根目录打开CMD进行。</p>
+<h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><p>接下来就是启动本地博客服务（server→服务）：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">D:\code\Hexo-Demo&gt;hexo s</span><br><span class="line">INFO  Validating config</span><br><span class="line">INFO  Start processing</span><br><span class="line">INFO  Hexo is running at http://localhost:4000/ . Press Ctrl+C to stop.</span><br></pre></td></tr></table></figure>
+
+<p>按照提示，打开浏览器，输入本地地址<a target="_blank" rel="noopener" href="http://localhost:4000/%E5%8D%B3%E5%8F%AF%E8%AE%BF%E9%97%AE%E4%BD%A0%E7%9A%84%E5%8D%9A%E5%AE%A2%E3%80%82">http://localhost:4000/即可访问你的博客。</a></p>
+<p><img src="https://image.manyacan.com/202211261701180.png-watermark02" class="lazyload" data-srcset="https://image.manyacan.com/202211261701180.png-watermark02" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="看到该页面意味着你已经成功在本地安装了Hexo博客"></p>
+<h3 id="创建新的文章"><a href="#创建新的文章" class="headerlink" title="创建新的文章"></a>创建新的文章</h3><p>一些大佬们都会告诉你使用（new→新建）：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo n &quot;我的第一篇文章&quot;</span><br></pre></td></tr></table></figure>
+
+<p>命令完成文章的创建，但是对于我这样的<code>VIM</code>小白来说，命令行的方式显然不够直观且很麻烦。</p>
+<p>你可直接使用一些<code>Markdown</code>编辑工具在博客路径<code>\source\_posts</code>文件夹下新建<code>md</code>文件来实现文章的创建。</p>
+<h3 id="重生成"><a href="#重生成" class="headerlink" title="重生成"></a>重生成</h3><p>创建新文章后，使用命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
+
+<p>清理缓存，然后（generate→生产）：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
+
+<p>重新生成博客页面，再次刷新浏览器页面即可看到新发布的文章。</p>
+</div><div class="story post-story"><h2 id="GitHub远程部署"><a href="#GitHub远程部署" class="headerlink" title="GitHub远程部署"></a>GitHub远程部署</h2><p>上面我们已经在本地<code>Node.js</code>环境中部署了<code>Hexo</code>博客系统，但是如果想将让全世界的人都可以访问到你的博客，那就需要将这个博客系统放置到云服务器中，让你在浩瀚无际的互联网当中也拥有一席之地。</p>
+<p>这个时候我们就不需要购买自己的网站服务器，而是借助于GitHub完成博客的线上部署。</p>
+<h3 id="创建GitHub仓库"><a href="#创建GitHub仓库" class="headerlink" title="创建GitHub仓库"></a>创建GitHub仓库</h3><p>首先登录<a target="_blank" rel="noopener" href="https://github.com/">GitHub</a>，然后点击New repository：</p>
+<p><img src="https://image.manyacan.com/202211261859931.png-wm04" class="lazyload" data-srcset="https://image.manyacan.com/202211261859931.png-wm04" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></p>
+<p>然后在Repository name中填写<code>YourGithubName.github.io</code>，注意，这个名字是固定的，必须是你前面显示的名字作为二级域名，然后Description中填写一段描述的话，还有就是记得要设置为Public，这样的话才保证任何人都可以通过域名来访问你的博客。</p>
+<p><img src="https://image.manyacan.com/202211261901210.png-wm04" class="lazyload" data-srcset="https://image.manyacan.com/202211261901210.png-wm04" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></p>
+<p>填写完毕之后，点击Create repository，即可完成仓库的创建。</p>
+<h3 id="部署插件的安装"><a href="#部署插件的安装" class="headerlink" title="部署插件的安装"></a>部署插件的安装</h3><p>然后回到本地博客文件夹，需要在安装一个用于<code>Git</code>部署插件，具体作用就是可以帮助我们把本地博客部署到刚才创建的GitHub仓库。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install --save hexo-deployer-git</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置文件的修改"><a href="#配置文件的修改" class="headerlink" title="配置文件的修改"></a>配置文件的修改</h3><p>安装完成后，使用文件编辑器（例如<a target="_blank" rel="noopener" href="https://blog.manyacan.com/archives/1714/">VSC</a>）打开博客文件根目录下的配置文件<code>_config.yml</code>，在102行的位置填写：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># Deployment</span></span><br><span class="line"><span class="section">## Docs: https://hexo.io/docs/one-command-deployment</span></span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/Man-Yacan/Man-Yacan.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+
+<p>其中只要把<code>repo</code>后面的网址更改为你创建的仓库地址就行了，然后别忘了<kbd>Ctrl</kbd> + <kbd>S</kbd>保存。</p>
+<blockquote>
+<p>关于博客设置的很多所有选项基本都是在这个配置文件中进行设置，基本配置文件的设置及其含义额可以参考官方文档：<a target="_blank" rel="noopener" href="https://hexo.io/docs/configuration%E3%80%82">https://hexo.io/docs/configuration。</a></p>
+</blockquote>
+<h3 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h3><p>使用命令（deploy→部署）：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+<p>即可将本地博客部署到GitHub云端，注意，这一步需要在弹出框中登陆你的GitHub。</p>
+<p>然后访问你创建的域名，例如我的：<a target="_blank" rel="noopener" href="https://man-yacan.github.io就可以访问你的在线博客了,如果加载不出来,请使用/">https://man-yacan.github.io就可以访问你的在线博客了，如果加载不出来，请使用</a><kbd>Ctrl</kbd> + <kbd>F5</kbd>强制刷新页面即可。</p>
+</div><div class="story post-story"><h2 id="Hexo的使用"><a href="#Hexo的使用" class="headerlink" title="Hexo的使用"></a>Hexo的使用</h2><h3 id="主题的安装"><a href="#主题的安装" class="headerlink" title="主题的安装"></a>主题的安装</h3><p>直接在<a target="_blank" rel="noopener" href="https://hexo.io/themes/">Hexo官网</a>上挑选合适的主题，一般每个主题都会有与之对应详细文档，按照文档操作来就不会错。</p>
+<p>主题下载完成后，要启用主题就要在博客根目录配置文件<code>_config.yml</code>第97行的位置进行修改：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># Extensions</span></span><br><span class="line"><span class="section">## Plugins: https://hexo.io/plugins/</span></span><br><span class="line"><span class="section">## Themes: https://hexo.io/themes/</span></span><br><span class="line">theme: yilia</span><br></pre></td></tr></table></figure>
+
+<p>然后记得清除缓存，重新生成博客然后部署至远程服务器。</p>
+
+</div>
       
     
   </div>
@@ -2560,15 +3104,17 @@ Qu...
     <div class='meta-v3' line_style='solid'>
       <div>
         
+          
+          <a class='avatar' target="_blank" rel="noopener" href='https://github.com/volantis-x/'><img src='https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png'></a>
+          <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <meta itemprop="image" content="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/favicon/apple-touch-icon.png">
+            <meta itemprop="name" content="Volantis Team">
+            <meta itemprop="url" content="https://github.com/volantis-x/">
+          </span>
+        
         <time itemprop="dateCreated datePublished" datetime="2022-11-26T21:27:10+08:00">2022-11-26</time>
         
       </div>
-      
-        <div>
-          <a class='readmore' href='/2022/11/26/hello-world/' itemprop="url">
-            Read More
-          </a>
-        </div>
       
     </div>
   
@@ -2593,65 +3139,19 @@ Qu...
     
     
       
-<section class="widget blogger desktop mobile ">
+<section class="widget text desktop moblie">
+  
+  <header>
+    
+      <i class="fa-brands fa-qq fa-fw" aria-hidden="true"></i><span class='name'>加入 QQ 群</span>
+    
+  </header>
+
+
   <div class='content'>
     
-      
-        <a class='avatar flat-box rectangle' href='/about/'>
-          <img no-lazy src='https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/blog/Logo-NavBar@3x.png'/>
-        </a>
-      
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">曼亚灿的个人博客</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="/atom.xml"
-              class="social fa-solid fa-rss flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="mailto:me@xxx.com"
-              class="social fa-solid fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="https://github.com/volantis-x/"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-          
-            <a href="/"
-              class="social fa-solid fa-headphones-alt flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-              
-            </a>
-          
-        
-      </div>
+      <p>如果你在使用中遇到问题，请到 <a target="_blank" rel="noopener" href="https://github.com/volantis-x/hexo-theme-volantis/issues">Github Issues</a> 或者 <a href="/faqs/#comments">留言板</a> 进行反馈，你也可以加入 <a target="_blank" rel="noopener" href="https://t.me/volantis_x">Telegram</a> 或者 <strong>QQ 群</strong>，验证码：vlts-2021<br><a target="_blank" rel="noopener" href="https://qm.qq.com/cgi-bin/qm/qr?k=FpexWW5GCLWOM3jF3LG-YWfllXuv7cMs&jump_from=webapi"><img src="https://bu.dusays.com/2021/09/24/ae832f0aadee8.png" class="lazyload" data-srcset="https://bu.dusays.com/2021/09/24/ae832f0aadee8.png" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="></a></p>
+
     
   </div>
 </section>
@@ -2663,7 +3163,6 @@ Qu...
     
     
       
-
     
   
 
@@ -2676,9 +3175,119 @@ Qu...
   
 
   
+    
+    
+      
+<section class="widget grid desktop mobile">
+  
+  <header>
+    
+      <i class="fa-solid fa-map-signs fa-fw" aria-hidden="true"></i><span class='name'>分类导航</span>
+    
+  </header>
+
+
+  <div class='content'>
+    <div class="grid navigation fixed">
+      
+        <a class="flat-box" href="/faqs/"
+          
+          
+          active-action="action-faqs">
+          
+            <i class="fa-solid fa-question-circle fa-fw" aria-hidden="true"></i>
+          
+          常见问题
+        </a>
+      
+        <a class="flat-box" href="/examples/"
+          
+          
+          active-action="action-examples">
+          
+            <i class="fa-solid fa-play-circle fa-fw" aria-hidden="true"></i>
+          
+          示例博客
+        </a>
+      
+        <a class="flat-box" href="/contributors/"
+          
+          
+          active-action="action-contributors">
+          
+            <i class="fa-solid fa-handshake fa-fw" aria-hidden="true"></i>
+          
+          特别感谢
+        </a>
+      
+        <a class="flat-box" href="/archives/"
+          
+          
+          active-action="action-archives">
+          
+            <i class="fa-solid fa-file-alt fa-fw" aria-hidden="true"></i>
+          
+          测试博文
+        </a>
+      
+        <a class="flat-box" href="https://github.com/volantis-x/hexo-theme-volantis/"
+          
+            rel="external nofollow noopener noreferrer"
+          
+          
+            target="_blank"
+          
+          active-action="action-https:githubcomvolantis-xhexo-theme-volantis">
+          
+            <i class="fa-solid fa-file-code fa-fw" aria-hidden="true"></i>
+          
+          主题源码
+        </a>
+      
+        <a class="flat-box" href="https://github.com/volantis-x/hexo-theme-volantis/releases/"
+          
+            rel="external nofollow noopener noreferrer"
+          
+          
+            target="_blank"
+          
+          active-action="action-https:githubcomvolantis-xhexo-theme-volantisreleases">
+          
+            <i class="fa-solid fa-tags fa-fw" aria-hidden="true"></i>
+          
+          更新日志
+        </a>
+      
+    </div>
+  </div>
+</section>
+
+    
+  
 
 
 <div class="widget-sticky">
+
+  
+  
+<section class="widget text desktop mobile">
+  
+  <header>
+    
+      <a href='/contributors/'><i class="fa-solid fa-plus fa-fw" aria-hidden="true"></i><span class='name'>社区活动</span></a>
+    
+  </header>
+
+
+  <div class='content'>
+    
+      <p><strong>如何让自己的文章收录到这里？</strong><br>官方网站是开源的，只要您的文章与 Hexo 博客搭建相关，就可以自助进行收录，详细的操作步骤请见：「<a href="/contributors/#%E5%8F%91%E5%B8%83%E4%B8%8E%E5%88%86%E4%BA%AB%E6%96%87%E7%AB%A0"><strong>发布与分享文章</strong></a>」。</p>
+
+    
+  </div>
+</section>
+
+  
 
 </div>
 
@@ -2699,6 +3308,24 @@ Qu...
         <div class="aplayer-container">
           
 
+  
+    
+      <meting-js
+        theme='#1BCDFC'
+        autoplay='false'
+        volume='0.4'
+        loop='all'
+        order='random'
+        fixed='false'
+        list-max-height='320px'
+        server='netease'
+        type='playlist'
+        id='5062959861'
+        list-folded='true'>
+      </meting-js>
+    
+  
+
 
         </div>
       
@@ -2708,28 +3335,89 @@ Qu...
         <div class="social-wrapper" itemprop="about" itemscope itemtype="http://schema.org/Thing">
           
             
-          
+              <a href="/atom.xml"
+                class="social  flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer" itemprop="url">
+                
+                  <img src="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/icon/1322024-social-media/020-rss.svg" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/icon/1322024-social-media/020-rss.svg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/>
+                
+              </a>
             
           
+            
+              <a href="https://github.com/volantis-x/"
+                class="social  flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer" itemprop="url">
+                
+                  <img src="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/icon/1322024-social-media/029-github.svg" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/icon/1322024-social-media/029-github.svg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/>
+                
+              </a>
+            
+          
+            
+              <a href="https://t.me/volantis_x"
+                class="social  flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer" itemprop="url">
+                
+                  <img src="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/icon/1322024-social-media/010-facebook.svg" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/icon/1322024-social-media/010-facebook.svg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/>
+                
+              </a>
+            
+          
+            
+              <a href="https://t.me/volantis_x"
+                class="social  flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer" itemprop="url">
+                
+                  <img src="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/icon/1322024-social-media/018-twitter.svg" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/icon/1322024-social-media/018-twitter.svg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/>
+                
+              </a>
+            
+          
+            
+              <a href="https://t.me/volantis_x"
+                class="social  flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer" itemprop="url">
+                
+                  <img src="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/icon/1322024-social-media/045-telegram.svg" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/icon/1322024-social-media/045-telegram.svg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/>
+                
+              </a>
+            
+          
+            
+              <a href="https://t.me/volantis_x"
+                class="social  flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer" itemprop="url">
+                
+                  <img src="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/icon/1322024-social-media/006-youtube.svg" class="lazyload" data-srcset="https://unpkg.com/volantis-static@0.0.1660614606622/media/org.volantis/icon/1322024-social-media/006-youtube.svg" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAP///////yH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="/>
+                
+              </a>
             
           
         </div>
       
     
       
-        <div><p>Blog content follows the <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License</a></p>
-</div>
+        <p>Uses <a target="_blank" rel="noopener" href="https://github.com/volantis-x/hexo-theme-volantis/#6.0.0-alpha.1">Volantis</a> as theme. You can find <a href="GitHub">source</a> in <a target="_blank" rel="noopener" href="https://github.com/volantis-x/volantis-docs">https://github.com/volantis-x/volantis-docs</a>.</p>
+
       
     
       
-        Use
-        <a href="https://github.com/volantis-x/hexo-theme-volantis/#6.0.0-alpha.1" target="_blank" class="codename">Volantis</a>
-        as theme
+        
+          <div><p><span>本站总访问量为 <span id='busuanzi_value_site_pv'><i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i></span> 次</span> <span>访客数为 <span id='busuanzi_value_site_uv'><i class="fa-solid fa-loader fa-spin fa-fw" aria-hidden="true"></i></span> 人</span></p>
+</div>
+        
       
     
       
         <div class='copyright'>
-        <p><a href="/">Copyright © since 2017 XXX</a></p>
+        <p><a target="_blank" rel="noopener" href="https://github.com/volantis-x/">Copyright © Since 2017 Volantis Team</a></p>
 
         </div>
       
@@ -2774,8 +3462,529 @@ Qu...
 
 
 
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="rightmenu-wrapper">
+  <ul class="list-v rightmenu" id="rightmenu-content">
+    
+  <li class='navigation menuNavigation-Content'>
+
+
+    <a class="nav icon-only fix-cursor-default" onclick="history.back()"><i class="fa-duotone fa-arrow-left PETERRIVE fa-fw"></i></a>
+
+
+
+    <a class="nav icon-only fix-cursor-default" onclick="history.forward()"><i class="fa-duotone fa-arrow-right PETERRIVE fa-fw"></i></a>
+
+
+
+    <a class="nav icon-only fix-cursor-default" onclick="window.location.reload()"><i class="fa-duotone fa-redo PETERRIVE fa-fw"></i></a>
+
+
+
+    <a class="nav icon-only fix-cursor-default" onclick="VolantisApp.scrolltoElement(volantis.dom.bodyAnchor)"><i class="fa-duotone fa-arrow-up PETERRIVE fa-fw"></i></a>
+
+
+  </li>
+
+
+    <hr class="menuLoad-Content" >
+
+
+
+  <li class="menuLoad-Content">
+    <span class="vlts-menu fix-cursor-default event" id="copyPaste" data-event="copyPaste" data-group="inputBox">
+      <i class="fa-duotone PETERRIVE fa-paste fa-fw"></i>
+      粘贴文本
+    </span>
+  </li>
+
+
+
+  <li class="menuLoad-Content">
+    <span class="vlts-menu fix-cursor-default event" id="copyAll" data-event="copyAll" data-group="inputBox">
+      <i class="fa-duotone PETERRIVE fa-object-ungroup fa-fw"></i>
+      全选文本
+    </span>
+  </li>
+
+
+
+  <li class="menuLoad-Content">
+    <span class="vlts-menu fix-cursor-default event" id="copyCut" data-event="copyCut" data-group="inputBox">
+      <i class="fa-duotone PETERRIVE fa-cut fa-fw"></i>
+      剪切文本
+    </span>
+  </li>
+
+
+
+  <li class="menuLoad-Content">
+    <span class="vlts-menu fix-cursor-default event" id="copyText" data-event="copyText" data-group="seletctText">
+      <i class="fa-duotone PETERRIVE fa-copy fa-fw"></i>
+      复制文本
+    </span>
+  </li>
+
+
+
+  <li class="menuLoad-Content">
+    <span class="vlts-menu fix-cursor-default event" id="searchWord" data-event="OpenSearch(__text__)" data-group="seletctText">
+      <i class="fa-duotone PETERRIVE fa-search fa-fw"></i>
+      站内搜索
+    </span>
+  </li>
+
+
+
+  <li class="menuLoad-Content">
+    <span class="vlts-menu fix-cursor-default event" id="bingSearch" data-event="window.open(`https://cn.bing.com/search?q=${__text__}`)" data-group="seletctText">
+      <i class="fa-duotone PETERRIVE fa-search fa-fw"></i>
+      必应搜索
+    </span>
+  </li>
+
+
+
+  <li class="menuLoad-Content">
+    <span class="vlts-menu fix-cursor-default event" id="openTab" data-event="window.open(__link__)" data-group="elementCheck">
+      <i class="fa-duotone PETERRIVE fa-external-link-square-alt fa-fw"></i>
+      新标签页打开
+    </span>
+  </li>
+
+
+
+  <li class="menuLoad-Content">
+    <span class="vlts-menu fix-cursor-default event" id="copyLink" data-event="copyLink" data-group="elementCheck">
+      <i class="fa-duotone PETERRIVE fa-link fa-fw"></i>
+      复制链接地址
+    </span>
+  </li>
+
+
+
+  <li class="menuLoad-Content">
+    <span class="vlts-menu fix-cursor-default event" id="copyImg" data-event="copyImg" data-group="elementImage">
+      <i class="fa-duotone PETERRIVE fa-image fa-fw"></i>
+      复制图片
+    </span>
+  </li>
+
+
+
+  <li class="menuLoad-Content">
+    <span class="vlts-menu fix-cursor-default event" id="googleImg" data-event="window.open(`https://www.google.com/searchbyimage?image_url=${__link__}`)" data-group="elementImage">
+      <i class="fa-duotone PETERRIVE fa-images fa-fw"></i>
+      谷歌识图
+    </span>
+  </li>
+
+
+
+    <hr class="menuLoad-Content" >
+
+
+
+  <li class="menuLoad-Content">
+    <span class="vlts-menu fix-cursor-default event" id="prev" data-event="volantis.rightmenu.jump('prev')" data-group="prevNext">
+      <i class="fa-duotone fa-angles-left PETERRIVE fa-fw"></i>
+      查看上一篇
+    </span>
+  </li>
+
+
+
+  <li class="menuLoad-Content">
+    <span class="vlts-menu fix-cursor-default event" id="next" data-event="volantis.rightmenu.jump('next')" data-group="prevNext">
+      <i class="fa-duotone fa-angles-right PETERRIVE fa-fw"></i>
+      查看下一篇
+    </span>
+  </li>
+
+
+
+    <hr class="menuLoad-Content" >
+
+
+
+  <li class="menuLoad-Content">
+    <a class="vlts-menu fix-cursor-default" id="help" href="/faqs/" data-group="link">
+      <i class="fa-duotone fa-question EMERALD fa-fw"></i>
+      常见问题
+    </a>
+  </li>
+
+
+
+  <li class="menuLoad-Content">
+    <a class="vlts-menu fix-cursor-default" id="examples" href="/examples/" data-group="link">
+      <i class="fa-duotone fa-rss PETERRIVE fa-fw"></i>
+      示例博客
+    </a>
+  </li>
+
+
+
+  <li class="menuLoad-Content">
+    <a class="vlts-menu fix-cursor-default" id="contributors" href="/contributors/" data-group="link">
+      <i class="fa-duotone fa-fan fa-spin AMETHYST fa-fw"></i>
+      加入社区
+    </a>
+  </li>
+
+
+
+    <hr class="menuLoad-Content" >
+
+
+
+  <li class="menuLoad-Content">
+    <a class="vlts-menu fix-cursor-default" id="source_docs" target="_blank" rel="noopener" href="https://github.com/volantis-x/volantis-docs/" data-group="link">
+      <i class="fa-duotone fa-code-branch WETASPHALT fa-fw"></i>
+      本站源码
+    </a>
+  </li>
+
+
+
+  <li class="menuLoad-Content">
+    <a class="vlts-menu fix-cursor-default" id="source_theme" target="_blank" rel="noopener" href="https://github.com/volantis-x/hexo-theme-volantis/" data-group="link">
+      <i class="fa-duotone fa-code-branch CONCRETE fa-fw"></i>
+      主题源码
+    </a>
+  </li>
+
+
+
+    <hr class="menuLoad-Content" >
+
+
+
+  <li class="menuLoad-Content">
+    <span class="vlts-menu fix-cursor-default event" id="darkMode" data-event="volantis.dark.toggle()" data-group="darkMode">
+      <i class="fa-duotone fa-eclipse-alt WISTERIA fa-fw"></i>
+      暗黑模式
+    </span>
+  </li>
+
+
+
+    <hr class="menuLoad-Content" >
+
+
+
+  <li class="menuLoad-Content">
+    <span class="vlts-menu fix-cursor-default event" id="printMode" data-event="printMode" data-group="articlePage">
+      <i class="fa-duotone fa-print TURQUOISE fa-fw"></i>
+      打印页面
+    </span>
+  </li>
+
+
+
+  <li class="menuLoad-Content">
+    <span class="vlts-menu fix-cursor-default event" id="readMode" data-event="readMode" data-group="articlePage">
+      <i class="fa-duotone fa-book-open EMERALD fa-fw"></i>
+      阅读模式
+    </span>
+  </li>
+
+
+
+    <hr class="menuLoad-Content" >
+
+
+<div id="menuMusic">
+  <li class='music name menuOption-Content'>
+    <p class='nav music-title fix-cursor-default'></p>
+  </li>
+  <li class='music ctrl'>
+    <a class='nav icon-only backward fix-cursor-default'  title="backward">
+      <i class='fa-duotone PETERRIVE fa-step-backward fa-fw'></i>
+    </a>
+    <a class='nav icon-only toggle fix-cursor-default'  title="toggle">
+      <i class='fa-duotone PETERRIVE fa-play fa-fw'></i>
+    </a>
+    <a class='nav icon-only forward fix-cursor-default'  title="forward">
+      <i class='fa-duotone PETERRIVE fa-step-forward fa-fw'></i>
+    </a>
+  </li>
+  <li class='music volume'>
+    <div class='nav volume'>
+      <div class="aplayer-volume-bar-wrap">
+        <div class="aplayer-volume-bar fix-cursor-pointer">
+          <div class="aplayer-volume"></div>
+          <i class='left fa-duotone PETERRIVE fa-volume-off fa-fw'></i>
+          <i class='right fa-duotone PETERRIVE fa-volume-up fa-fw'></i>
+        </div>
+      </div>
+    </div>
+  </li>
+</div>
+
+  </ul>
+</div>
+<script src="/js/plugins/rightMenus.js"></script>
+<script>
+  const RightMenusFunction = {};
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  //RightMenusFunction['copyPaste'] = (fun) => {fun()}
+
+
+
+
+
+  //RightMenusFunction['copyAll'] = (fun) => {fun()}
+
+
+
+
+
+  //RightMenusFunction['copyCut'] = (fun) => {fun()}
+
+
+
+
+
+  //RightMenusFunction['copyText'] = (fun) => {fun()}
+
+
+
+
+
+  RightMenusFunction['searchWord'] = (__text__) => {OpenSearch(__text__)}
+
+
+
+
+
+  RightMenusFunction['bingSearch'] = (__text__) => {window.open(`https://cn.bing.com/search?q=${__text__}`)}
+
+
+
+
+
+  RightMenusFunction['openTab'] = (__link__) => {window.open(__link__)}
+
+
+
+
+
+  //RightMenusFunction['copyLink'] = (fun) => {fun()}
+
+
+
+
+
+  //RightMenusFunction['copyImg'] = (fun) => {fun()}
+
+
+
+
+
+  RightMenusFunction['googleImg'] = (__link__) => {window.open(`https://www.google.com/searchbyimage?image_url=${__link__}`)}
+
+
+
+
+
+
+
+  RightMenusFunction['prev'] = () => {volantis.rightmenu.jump('prev')}
+
+
+
+
+
+  RightMenusFunction['next'] = () => {volantis.rightmenu.jump('next')}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  RightMenusFunction['darkMode'] = () => {volantis.dark.toggle()}
+
+
+
+
+
+
+
+  //RightMenusFunction['printMode'] = (fun) => {fun()}
+
+
+
+
+
+  //RightMenusFunction['readMode'] = (fun) => {fun()}
+
+
+
+
+
+
+
+</script>
+
+
 
 <!-- rightmenu要在darkmode之前（ToggleButton） darkmode要在comments之前（volantis.dark.push）-->
+
+  <script>
+const rootElement = document.documentElement;
+const darkModeStorageKey = "color-scheme";
+const rootElementDarkModeAttributeName = "color-scheme";
+const setLS = (k, v) => {
+    localStorage.setItem(k, v);
+};
+const removeLS = (k) => {
+    localStorage.removeItem(k);
+};
+const getLS = (k) => {
+    return localStorage.getItem(k);
+};
+const getModeFromCSSMediaQuery = () => {
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
+};
+const resetRootDarkModeAttributeAndLS = () => {
+  rootElement.removeAttribute(rootElementDarkModeAttributeName);
+  removeLS(darkModeStorageKey);
+};
+const validColorModeKeys = {
+  dark: true,
+  light: true,
+};
+const applyCustomDarkModeSettings = (mode) => {
+  const currentSetting = mode || getLS(darkModeStorageKey);
+  getCustomDarkMode();
+  if (currentSetting === getModeFromCSSMediaQuery()) {
+    resetRootDarkModeAttributeAndLS();
+  } else if (validColorModeKeys[currentSetting]) {
+    rootElement.setAttribute(rootElementDarkModeAttributeName, currentSetting);
+  } else {
+    resetRootDarkModeAttributeAndLS();
+  }
+};
+const invertDarkModeObj = {
+  dark: "light",
+  light: "dark",
+};
+/**
+ * get target mode
+ */
+ const getCustomDarkMode = () => {
+  let currentSetting = getLS(darkModeStorageKey);
+  if (validColorModeKeys[currentSetting]) {
+    currentSetting = invertDarkModeObj[currentSetting];
+  } else if (currentSetting === null) {
+    currentSetting = invertDarkModeObj[getModeFromCSSMediaQuery()];
+  } else {
+    return;
+  }
+  if(currentSetting=="dark"){
+    volantis.dark.mode="light";
+  }else{
+    volantis.dark.mode="dark";
+  }
+  // console.log(volantis.dark.mode)
+};
+const toggleCustomDarkMode = () => {
+  let currentSetting = getLS(darkModeStorageKey);
+  if (validColorModeKeys[currentSetting]) {
+    currentSetting = invertDarkModeObj[currentSetting];
+  } else if (currentSetting === null) {
+    currentSetting = invertDarkModeObj[getModeFromCSSMediaQuery()];
+  } else {
+    return;
+  }
+  setLS(darkModeStorageKey, currentSetting);
+  return currentSetting;
+};
+/**
+ * 暗黑模式触发器
+ */
+volantis.dark.toggle=()=>{
+  const mode = toggleCustomDarkMode();
+  applyCustomDarkModeSettings(mode);
+  // 使用 volantis.dark.push 方法传入volantis.dark.toggle回调函数 参见layout/_partial/scripts/global.ejs
+  volantis.dark.method.toggle.start();
+}
+/**
+ * bind event for toggle button
+ */
+
+function bindToggleButton() {
+  var btn= document.querySelectorAll("#wrapper .toggle-mode-btn,#rightmenu-wrapper .toggle-mode-btn")
+  btn.forEach(function (e) {
+    volantis.dom.$(e).on('click',volantis.dark.toggle);
+  })
+}
+applyCustomDarkModeSettings();
+document.addEventListener("DOMContentLoaded", ()=>{
+  volantis.requestAnimationFrame(bindToggleButton)
+});
+
+const darkModelListeners={
+  dark:(mediaQueryList )=>{
+    if(mediaQueryList.matches){
+      volantis.dark.mode = "dark";
+    }
+    volantis.dark.method.toggle.start();
+  },
+  light:(mediaQueryList)=>{
+    if(mediaQueryList.matches){
+      volantis.dark.mode = "light";
+    }
+    volantis.dark.method.toggle.start();
+  }
+}
+window.matchMedia('(prefers-color-scheme: dark)').addListener(darkModelListeners.dark)
+window.matchMedia('(prefers-color-scheme: light)').addListener(darkModelListeners.light)
+</script>
+
 
 
 
@@ -2848,6 +4057,106 @@ Qu...
 
 
 
+   <script type="text/javascript">
+  function p_scrollrebeal() {
+    ScrollReveal().reveal("#l_main .reveal", {
+      distance: "32px",
+      duration: "800",
+      interval: "20",
+      scale: "1",
+      easing: "ease-out",
+    });
+  }
+  function init_scrollrebeal() {
+    if (typeof ScrollReveal == "undefined") {
+      volantis.requestAnimationFrame(init_scrollrebeal);
+    } else {
+      p_scrollrebeal();
+    }
+  }
+  volantis.js("https://cdn.bootcdn.net/ajax/libs/scrollReveal.js/4.0.9/scrollreveal.min.js");
+  document.addEventListener("DOMContentLoaded", init_scrollrebeal)
+</script>
+
+
+
+
+  <script>
+  volantis.css("https://cdn.bootcdn.net/ajax/libs/aplayer/1.10.1/APlayer.min.css");
+
+  
+    (async () => {
+      // APlayer 需要在  MetingJS 之前加载
+      await volantis.js("https://cdn.bootcdn.net/ajax/libs/aplayer/1.10.1/APlayer.min.js")
+      await volantis.js("https://unpkg.com/meting@2/dist/Meting.min.js")
+    
+      // 右键 music 需要在 APlayer  MetingJS 之后加载
+      await volantis.js('/js/plugins/aplayer.js')
+    
+    })();
+
+    function SetAPlayerPlugin(){
+      let Metings = document.querySelectorAll('meting-js');
+      if (Metings.length === 0) {return;};
+      if (Metings[0].aplayer && Metings[0].aplayer.on) {
+        // improve the accessibility https://web.dev/button-name/
+        document.querySelectorAll(".aplayer-icon-menu").forEach(e=>{
+          e.setAttribute("aria-label","Aplayer Menu")
+        })
+        // message see: /layout/_plugins/message/script.ejs
+        
+          try {
+            setTimeout(() => {
+              Metings.forEach((item, index) => {
+                const aplayerItem = item.aplayer; if(!aplayerItem) return;
+                const rightAplayerCheck = 'true' === 'true'
+                  && item.meta.id === '5062959861';
+                if(rightAplayerCheck && typeof RightMenuAplayer !="undefined") RightMenuAplayer.checkAPlayer();
+                if(aplayerItem.events.events.play.every(item => {return item.name !== 'messagePlay'})) {
+                  aplayerItem.on('play', function messagePlay() {
+                    let index = aplayerItem.list.index;
+                    let title = aplayerItem.list.audios[index].title;
+                    let artist = aplayerItem.list.audios[index].artist;
+                    setTimeout(() => {
+                      VolantisApp.message('音乐通知', title + ' - ' + artist, {
+                        icon: 'fa-light fa-play light-blue',
+                        transitionIn: 'flipInX',
+                        transitionOut: 'flipOutX'
+                      });
+                    }, 100)
+                  });
+                }
+                if(aplayerItem.events.events.pause.every(item => {return item.name !== 'messagePause'})) {
+                  aplayerItem.on('pause', function messagePause() {
+                    let index = aplayerItem.list.index;
+                    let title = aplayerItem.list.audios[index].title;
+                    let artist = aplayerItem.list.audios[index].artist;
+                    setTimeout(() => {
+                      // 歌曲播放结束也会触发 pause 事件，为了避免错误提示，等待一会儿
+                      if(aplayerItem.paused) {
+                        VolantisApp.message('音乐通知', title + ' - ' + artist, {
+                          icon: 'fa-light fa-pause light-blue',
+                          transitionIn: 'flipInX',
+                          transitionOut: 'flipOutX'
+                        });
+                      }
+                    }, 100)
+                  });
+                }
+              });
+            }, 500)
+          } catch (error) { console.error(error); }
+        
+      }else{
+        volantis.requestAnimationFrame(SetAPlayerPlugin)
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", ()=>{
+      SetAPlayerPlugin();
+    });
+  
+</script>
 
 
 
@@ -2870,7 +4179,7 @@ Qu...
   function p_giscus() {
     const HEAD = check_giscus();
     if (!HEAD) return;
-    let cfg = Object.assign({"theme":{"light":"light","dark":"dark"}},pdata.commentConfig)
+    let cfg = Object.assign({"theme":{"light":"light","dark":"dark"},"repo":"volantis-x/community","repo-id":"MDEwOlJlcG9zaXRvcnkyNDIzNjY1ODM=","mapping":"number","term":"145","reactions-enabled":"1","emit-metadata":"0","lang":"zh-CN","input-position":"top"},pdata.commentConfig)
     const script = document.createElement('script');
     script.setAttribute('src', 'https://giscus.app/client.js');
     Object.keys(cfg).forEach(k=>{
@@ -2903,6 +4212,8 @@ Qu...
 
 
 
+
+  <script defer src="https://npm.elemecdn.com/penndu@1.0.0/bsz.js"></script>
 
 
 <!-- optional -->
@@ -2981,6 +4292,57 @@ Qu...
 
 
 
+
+
+  <script>
+  let imgs = ["https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/003.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/025.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/051.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/033.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/019.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/004.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/039.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/005.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/052.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/012.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/038.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/056.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/046.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/001.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/035.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/006.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/016.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/034.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/054.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/042.webp","https://unpkg.com/volantis-static@0.0.1660614606622/media/wallpaper/minimalist/2020/002.webp"];
+  let index = 0;
+  let IntervalParallax = null;
+
+  function parallax(){
+    let ParallaxWindow = document.querySelector("#parallax-window");
+    
+    Parallax.window = ParallaxWindow;
+    Parallax.options.fade = 1500;
+    Parallax.cache = 1;
+    next_parallax();
+    Parallax.init();
+    if (imgs.length>1) {
+      IntervalParallax = setInterval(function () {
+        next_parallax();
+      }, '10000');
+    }
+  }
+
+  function next_parallax() {
+    if (typeof Parallax == "undefined") {
+      return
+    }
+    
+      if (!document.querySelector("#full")&&!document.querySelector("#half")) {
+        return
+      }
+    
+    if (imgs.length>=1) {
+      Parallax.options.src = imgs[index % imgs.length];
+      Parallax.start();
+      index++;
+      if (Parallax.cache) {
+        fetch(imgs[index % imgs.length] +"?t=" + new Date().getTime());
+        if (index == imgs.length) {
+          Parallax.cache = 0;
+        }
+      }
+    }
+  }
+  var runningOnBrowser = typeof window !== "undefined";
+  var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
+  if (!isBot) {
+    volantis.js('/js/plugins/parallax.js').then(()=>{
+      parallax()
+    })
+  }
+</script>
 
 
 
@@ -3149,6 +4511,95 @@ Qu...
 </script>
 
 
+
+
+  <script>
+  try {
+    // https://web.dev/content-visibility/
+    // https://www.caniuse.com/?search=content-visibility
+    // https://infrequently.org/2020/12/content-visibility-scroll-fix/
+    // https://infrequently.org/2020/12/resize-resilient-deferred-rendering/
+
+    // 备注 目前已知的问题:
+    // 动态修改导致的内容高度变化(例如评论框异步渲染的外部盒子高度变化) 无法提前获知, 进而导致的首次滚动条跳动无法去除 (wontfix) 事实上不使用 content-visibility 也会有跳动, 不过是比使用 content-visibility 跳动提前
+    // scrollreveal 插件潜在问题 目前尚不明确
+
+    let eqIsh = (a, b, fuzz = 2) => {
+      return Math.abs(a - b) <= fuzz;
+    };
+
+    let rectNotEQ = (a, b) => {
+      return !eqIsh(a.width, b.width) || !eqIsh(a.height, b.height);
+    };
+
+    // Keep a map of elements and the dimensions of
+    // their place-holders, re-setting the element's
+    // intrinsic size when we get updated measurements
+    // from observers.
+    let spaced = new WeakMap();
+
+    // Only call this when known cheap, post layout
+    let reserveSpace = (el, rect = el.getClientBoundingRect()) => {
+      let old = spaced.get(el);
+      // Set intrinsic size to prevent jumping on un-painting:
+      //    https://drafts.csswg.org/css-sizing-4/#intrinsic-size-override
+      if (!old || rectNotEQ(old, rect)) {
+        spaced.set(el, rect);
+        el.style["contain-intrinsic-size"] = `${rect.width}px ${rect.height}px`;
+      }
+    };
+
+    let iObs = new IntersectionObserver(
+      (entries, o) => {
+        entries.forEach((entry) => {
+          // We don't care if the element is intersecting or
+          // has been laid out as our page structure ensures
+          // they'll get the right width.
+          reserveSpace(entry.target, entry.boundingClientRect);
+        });
+      },
+      { rootMargin: "500px 0px 500px 0px" }
+    );
+
+    let rObs = new ResizeObserver((entries, o) => {
+      entries.forEach((entry) => {
+        reserveSpace(entry.target, entry.contentRect);
+      });
+    });
+
+    let resizeResilientDeferredRendering = (Selector) => {
+      let articles = document.querySelectorAll(Selector);
+
+      if (articles.length) {
+        articles.forEach((el) => {
+          iObs.observe(el);
+          rObs.observe(el);
+        });
+
+        // Workaround for Chrome bug, part 2.
+        //
+        // Re-enable browser management of rendering for the
+        // first article after the first paint. Double-rAF
+        // to ensure we get called after a layout.
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            articles[0].style["content-visibility"] = "auto";
+          });
+        });
+      }
+    };
+
+    let contentVisibilityScrollFix = () => {
+      if (!("content-visibility" in document.documentElement.style)) {
+        return;
+      }
+      resizeResilientDeferredRendering(".post-story");
+    };
+    contentVisibilityScrollFix();
+  } catch (error) {
+    console.log(error);
+  }
+</script>
 
 
 
